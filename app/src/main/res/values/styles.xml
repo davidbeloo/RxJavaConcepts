@@ -1,0 +1,36 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="BasicStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:maxLength">3</item>
+    </style>
+
+    <style name="InputStyle" parent="BasicStyle">
+        <item name="android:text">0</item>
+        <item name="android:inputType">number</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:hint">value</item>
+    </style>
+
+    <style name="OutputStyle" parent="InputStyle">
+        <item name="android:maxLength">8</item>
+    </style>
+
+    <style name="OperatorStyle" parent="BasicStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+</resources>

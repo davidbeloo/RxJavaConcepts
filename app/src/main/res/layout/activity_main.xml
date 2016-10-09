@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.thepinkandroid.rxjavaconcepts.views.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextPlusInput1"
+            style="@style/InputStyle" />
+
+        <TextView
+            style="@style/OperatorStyle"
+            android:text="+" />
+
+        <EditText
+            android:id="@+id/editTextPlusInput2"
+            style="@style/InputStyle" />
+
+        <TextView
+            style="@style/OperatorStyle"
+            android:text="=" />
+
+        <TextView
+            android:id="@+id/textViewPlusResult"
+            style="@style/OutputStyle"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextMinusInput1"
+            style="@style/InputStyle" />
+
+        <TextView
+            style="@style/OperatorStyle"
+            android:text="-" />
+
+        <EditText
+            android:id="@+id/editTextMinusInput2"
+            style="@style/InputStyle" />
+
+        <TextView
+            style="@style/OperatorStyle"
+            android:text="=" />
+
+        <TextView
+            android:id="@+id/textViewMinusResult"
+            style="@style/OutputStyle"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextMultipleInput1"
+            style="@style/InputStyle" />
+
+        <TextView
+            style="@style/OperatorStyle"
+            android:text="*" />
+
+        <EditText
+            android:id="@+id/editTextMultipleInput2"
+            style="@style/InputStyle" />
+
+        <TextView
+            style="@style/OperatorStyle"
+            android:text="=" />
+
+        <TextView
+            android:id="@+id/textViewMultipleResult"
+            style="@style/OutputStyle"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextDivideInput1"
+            style="@style/InputStyle" />
+
+        <TextView
+            style="@style/OperatorStyle"
+            android:text="/" />
+
+        <EditText
+            android:id="@+id/editTextDivideInput2"
+            style="@style/InputStyle" />
+
+        <TextView
+            style="@style/OperatorStyle"
+            android:text="=" />
+
+        <TextView
+            android:id="@+id/textViewDivideResult"
+            style="@style/OutputStyle"
+            android:gravity="center" />
+    </LinearLayout>
+
+
+</LinearLayout>
