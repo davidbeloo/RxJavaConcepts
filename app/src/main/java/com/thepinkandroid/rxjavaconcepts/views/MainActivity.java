@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.thepinkandroid.rxjavaconcepts.R;
-import com.thepinkandroid.rxjavaconcepts.controllers.EventsManager;
 import com.thepinkandroid.rxjavaconcepts.controllers.LogicManager;
 import com.thepinkandroid.rxjavaconcepts.models.Action;
 import com.thepinkandroid.rxjavaconcepts.models.DataToCalculate;
@@ -35,12 +34,10 @@ public class MainActivity extends AppCompatActivity implements Observer<DataToPr
 
         mContext = this;
         setViews();
-        EventsManager.getInstance().register(this);
     }
 
     @Override
     protected void onDestroy() {
-        EventsManager.getInstance().unregister(this);
         // Unsubscription if needed
         LogicManager.getInstance().unSubscribe();
         super.onDestroy();
