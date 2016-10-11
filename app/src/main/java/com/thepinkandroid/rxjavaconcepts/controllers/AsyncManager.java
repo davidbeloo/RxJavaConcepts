@@ -1,9 +1,13 @@
 package com.thepinkandroid.rxjavaconcepts.controllers;
 
-import com.thepinkandroid.rxjavaconcepts.interfaces.CalculateListener;
 import com.thepinkandroid.rxjavaconcepts.models.DataToCalculate;
 import com.thepinkandroid.rxjavaconcepts.models.DataToPresent;
 
+import java.util.List;
+
+import rx.Observable;
+import rx.Observer;
+import rx.Subscription;
 import rx.subjects.Subject;
 
 /**
@@ -12,7 +16,9 @@ import rx.subjects.Subject;
 public class AsyncManager {
     private static AsyncManager msInstance = new AsyncManager();
     private Subject<DataToCalculate, Integer> mSubject;
-    private CalculateListener mCalculateListener;
+    private Observer<DataToPresent> mUIObserver;
+    private Subscription mObserverSubscription;
+
 
     public static AsyncManager getInstance() {
         return msInstance;
@@ -22,8 +28,8 @@ public class AsyncManager {
         initialize();
     }
 
-    public void calculateResult(DataToCalculate dataToCalculate, CalculateListener calculateListener) {
-        mCalculateListener = calculateListener;
+    public void calculateResult(DataToCalculate dataToCalculate, Observer<DataToPresent> observer) {
+        mUIObserver = observer;
         mSubject.onNext(dataToCalculate);
     }
     
@@ -43,16 +49,22 @@ public class AsyncManager {
             @Override
             public void onError(Throwable e) {
                 // Called when the observable encounters an error
-                mCalculateListener.onFailed();
+                DataToPresent result = new DataToPresent(null, null, true);
+                updateUI(result);
             }
 
             @Override
             public void onNext(DataToCalculate dataToCalculate) {
                 // Called each time the observable emits data
                 DataToPresent result = calculate(dataToCalculate);
-                mCalculateListener.onSuccess(result);
+                updateUI(result);
             }
         };
+    }
+
+    private void updateUI(DataToPresent dataToPresent) {
+        Observable<DataToPresent> observable = Observable.just(dataToPresent);
+        mObserverSubscription = observable.subscribe(mUIObserver);
     }
 
 
@@ -93,6 +105,12 @@ public class AsyncManager {
             }
         }
 
-        return new DataToPresent(dataToCalculate.getAction(), result);
+        return new DataToPresent(dataToCalculate.getAction(), result, false);
+    }
+
+    public void unSubscribe() {
+        if (mObserverSubscription != null && !mObserverSubscription.isUnsubscribed()) {
+            mObserverSubscription.unsubscribe();
+        }
     }
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RxJavaConcepts</string>
+    <string name="error_in_calculation">Error in calculation</string>
 </resources>
